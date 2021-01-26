@@ -17,9 +17,18 @@ export default class Nav extends Component {
             buttons = (
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
+                        <Link to={'/search'} className="nav-link">Search</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={'/collections'} className="nav-link">My Collections</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link to={'/'} onClick={() => this.handleLogout()} className="nav-link">Logout</Link>
                     </li>
-                </ul>
+                    <li className="nav-item">
+                        <Link to={'/'} className="nav-link">Signed in as: {this.props.user.name}</Link>
+                    </li>                                 
+                </ul>    
             )
         } else {
             buttons = (
@@ -35,15 +44,13 @@ export default class Nav extends Component {
         }
 
         return (
-            <nav className="navbar navbar-expand navbar-dark bg-dark fixed-top">
-                <div className="container">
-                    <Link to={'/'}>
-                        <img className="navbar-brand" src={logo} alt="logo" />
-                    </Link>                    
-                    <div className="collapse navbar-collapse">
-                       {buttons} 
-                    </div>
-                </div>
+            <nav className="navbar navbar-expand navbar-dark bg-dark p-4">
+                <Link to={'/'}>
+                    <img className="navbar-brand" src={logo} alt="logo" />
+                </Link> 
+                <div>                   
+                    {buttons}
+                </div>    
             </nav>
         )
     }

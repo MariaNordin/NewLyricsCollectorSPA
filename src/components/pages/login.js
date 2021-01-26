@@ -46,7 +46,8 @@ export default class Login extends Component {
         }
         const { password, name } = this.state;
         return (
-            <Container>
+            <div className="formContainer">
+                <Container>
                 <Form className='mt-4 mb-4'>
                 <Form.Row className='mt-4'>
                     <Form.Control 
@@ -71,6 +72,7 @@ export default class Login extends Component {
                 </Form.Row>
                 </Form>
             </Container>
+            </div>            
         )
     }
 }

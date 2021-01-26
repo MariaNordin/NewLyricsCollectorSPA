@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
-
 * {
   box-sizing: border-box;
 }
@@ -8,13 +6,6 @@ body {
   background:#e6ecec !important;
   min-height: 100vh;
   display: flex;
-  font-weight: 400;
-  font-family: 'Fira Sans', sans-serif;
-}
-
-h1,h2,h3,h4,h5,h6,label,span {
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
 }
 
 body, html, .App, #root, .auth-wrapper {
@@ -22,27 +13,22 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 
+#spotify {
+  float: right;
+  padding-right: 20px;
+  color: #1DB954
+}
+
 .navbar-dark {
-  background-color: #e6ecec;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  background-color: #ffffff;
 }
 
 .auth-wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 60px;
+  margin-top: 30px;
   text-align: left;
-}
-
-.auth-inner {
-  width: 450px;
-  margin: auto;
-  background: whitesmoke;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
-  border-radius: 15px;
-  transition: all .3s;
 }
 
 .auth-wrapper .form-control:focus {

@@ -4,9 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import LyricsView from './lyricsView';
 
-//import './../../globalCss.css';
-//import LyricsView from '../lyricsView/lyricsView';
 
 export default class SearchLyrics extends Component {
     constructor() {
@@ -51,35 +50,54 @@ export default class SearchLyrics extends Component {
         ) : this.setState({ showLyrics: true });
     }
 
+    // formatLyrics() {
+    //     var formattedLyrics = this.state.lyrics.lyrics;
+    //     formattedLyrics = formattedLyrics.split('.');
+    //     this.setState({ lyrics: formattedLyrics, showLyrics: true })
+    // }
+
+    handleClose() {
+        this.setState({ showLyrics: false })
+    }
+
     render() {
-        const { artist, title } = this.state
-        return(
-            <Container>
-            <Form className='mt-5'>Search for lyrics:
-                <Form.Row  className='mt-4'>
-                    <Col>       
-                        <Form.Control 
-                            type='input' 
-                            value={artist} 
-                            placeholder='Artist' 
-                            onChange={(e) => this.setState({ artist: e.target.value })}
-                        />
-                    </Col>
-                    <Col>
-                        <Form.Control 
-                            type='input' 
-                            value={title}
-                            placeholder='Song Title'
-                            onChange={(e) => this.setState({ title: e.target.value })} 
-                        />                  
-                    </Col>
-                    <Col>
-                        <Button variant='primary' block onClick={
-                            () => this.handleInput( artist, title )}>Search</Button>
-                    </Col>            
-                </Form.Row>
-            </Form>
-            </Container>
-        )
+        const { artist, title, message, lyrics, showLyrics } = this.state
+
+        if(showLyrics === true) {
+            return (
+                <LyricsView lyrics={lyrics} onClose={() => this.handleClose()}/>
+            )
+        }
+        else {
+            return (
+                <Container>
+                <Form className='mt-5'>Search for lyrics:
+                    <Form.Row className='mt-4'>
+                        <Col>       
+                            <Form.Control 
+                                type='input' 
+                                value={artist} 
+                                placeholder='Artist' 
+                                onChange={(e) => this.setState({ artist: e.target.value })}
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Control 
+                                type='input' 
+                                value={title}
+                                placeholder='Song Title'
+                                onChange={(e) => this.setState({ title: e.target.value })} 
+                            />                  
+                        </Col>
+                        <Col>
+                            <Button variant='primary' block onClick={
+                                () => this.handleInput( artist, title )}>Search</Button>
+                        </Col>            
+                    </Form.Row>
+                </Form>
+                <p>{message}</p>
+                </Container>
+            )
+        }
     }
 }

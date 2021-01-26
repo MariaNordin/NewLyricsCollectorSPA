@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
+import SearchLyrics from '../pages/lyrics/searchLyrics';
+
 export default class Home extends Component {
-    
 
     render() {
         if(this.props.user !== null) {
             return (
-                <p>Signed in as: {this.props.user.name}</p>
+                <p></p>
             )
         }
         else {
             return (
-                <div>inte inloggad</div>
+                <SearchLyrics />
             )
         }
     }

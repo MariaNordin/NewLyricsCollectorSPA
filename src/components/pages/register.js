@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button} from 'react-bootstrap';
 
+import './forms.css';
 
 export default class Register extends Component {
     constructor() {
@@ -58,7 +59,8 @@ export default class Register extends Component {
     render() {
         const { email, password, name, message } = this.state;
         return (
-            <Container>
+            <div className="formContainer">
+                <Container>
                 <Form className='mt-4 mb-4'>
                 <Form.Row className='mt-4'>
                     <Form.Control 
@@ -95,6 +97,7 @@ export default class Register extends Component {
                   </Form.Row>
                 </Form>
             </Container>
+            </div>            
         )
     }
 }
