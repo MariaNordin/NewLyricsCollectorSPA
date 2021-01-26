@@ -3,8 +3,8 @@ import { Container, Form, Button} from 'react-bootstrap';
 
 
 export default class Register extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = { 
             email: '', 
             password: '',
