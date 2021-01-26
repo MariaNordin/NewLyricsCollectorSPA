@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Container, Form, Button} from 'react-bootstrap';
 
 export default class Login extends Component {
@@ -7,6 +8,7 @@ export default class Login extends Component {
         this.state = {  
             name: '',
             password: '',
+            loggedIn: false
         }
     }
 
@@ -28,7 +30,9 @@ export default class Login extends Component {
             }
       
             sessionStorage.setItem('token', data.token);
-            console.log(data)
+            this.props.setUser();
+            console.log(data);
+            this.setState({ loggedIn: true });
         })
         .catch(error => {
             this.setState({ errorMessage: error.toString() });
@@ -37,6 +41,9 @@ export default class Login extends Component {
     } 
 
     render() {
+        if(this.state.loggedIn === true) {
+            return <Redirect to={'/'}/>;
+        }
         const { password, name } = this.state;
         return (
             <Container>

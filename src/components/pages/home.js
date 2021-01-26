@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 
 export default class Home extends Component {
+    
+
     render() {
-        return (
-            <h2>Start page</h2>
-        )
+        if(this.props.user !== null) {
+            return (
+                <p>Signed in as: {this.props.user.name}</p>
+            )
+        }
+        else {
+            return (
+                <div>inte inloggad</div>
+            )
+        }
     }
 }
