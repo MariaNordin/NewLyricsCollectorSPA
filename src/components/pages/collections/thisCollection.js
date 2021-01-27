@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 export default class Collections extends Component {
     constructor() {
         super();
-        this.state = { collection: [{}] }
+        this.state = { collection: [{}], name: '', lyrics: [] }
     }
 
     async componentDidMount() {
@@ -30,21 +30,14 @@ export default class Collections extends Component {
                 return Promise.reject(error);
             }
         
-            this.setState({ collection: data[0] });
-            console.log(data);
+            this.setState({ collection: data, name: data[0].name, lyrics: data[0].lyrics });
+            console.log(this.state.collection, this.state.lyrics);
         })
         .catch(error => {
             this.setState({ errorMessage: error.toString() });
             console.error('Error: ', error);
         })        
     }
-
-    // {this.state.collection.lyrics.map((item) => (
-    //     <ListGroup.Item as="a" key={item.id} variant="danger">
-    //         {(item.lyrics.title)}
-    //     </ListGroup.Item>
-    // ))} 
-    
 
     onGoBackClick() {
         this.props.onBackClick();
@@ -54,10 +47,16 @@ export default class Collections extends Component {
         return(
             <div>
                 <Container>
-                    <h1 className="mt-3" >{this.state.collection.name}</h1>        
+                    <h1 className="mt-3">{this.state.name}</h1>
                     <ListGroup className="mt-4">
-   
-                    </ListGroup>
+                    {this.state.lyrics.map((item) => (
+                        <div key={item.lyricsId}>
+                        <ListGroup.Item as="a" key={item.lyrics.id} variant="danger">
+                            {item.lyrics.title}
+                        </ListGroup.Item>
+                        </div>                        
+                    ))}
+                    </ListGroup>                    
                     <Button className="mt-5" variant="info" onClick={() => this.onGoBackClick()}>Back to all collections</Button>
                 </Container>                
             </div>
