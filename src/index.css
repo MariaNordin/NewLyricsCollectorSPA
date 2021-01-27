@@ -13,15 +13,23 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 
+/*---mina egna---*/
+
 #spotify {
   float: right;
   padding-right: 20px;
   color: #1DB954
 }
 
-.navbar-dark {
-  background-color: #ffffff;
+.collections {
+  padding: 30px 200px;
 }
+
+.pop-up {
+  padding: 20px;
+}
+
+/*---------*/
 
 .auth-wrapper {
   display: flex;

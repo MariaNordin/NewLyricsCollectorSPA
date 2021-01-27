@@ -7,7 +7,6 @@ import Nav from './../nav/nav';
 import Home from '../pages/home';
 import Login from '../pages/login';
 import Register from '../pages/register';
-import Collections from '../pages/collections';
 import SearchLyrics from '../pages/lyrics/searchLyrics';
 
 export default class App extends Component {
@@ -60,7 +59,6 @@ export default class App extends Component {
                 <Route exact path="/" component={() => <Home user={this.state.user}/>} />
                 <Route exact path="/login" component={() => <Login setUser={() => this.setUser()}/>} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/collections" component={Collections} />
                 <Route exact path="/search" component={SearchLyrics} />
               </Switch>           
           </div>

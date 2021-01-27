@@ -16,16 +16,13 @@ export default class Nav extends Component {
         if(this.props.user !== null) {
             buttons = (
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
+                    <li className="nav-item pt-4">
                         <Link to={'/search'} className="nav-link">Search</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link to={'/collections'} className="nav-link">My Collections</Link>
-                    </li>
-                    <li className="nav-item">
+                    <li className="nav-item pt-4">
                         <Link to={'/'} onClick={() => this.handleLogout()} className="nav-link">Logout</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item pt-4">
                         <Link to={'/'} className="nav-link">Signed in as: {this.props.user.name}</Link>
                     </li>                                 
                 </ul>    
@@ -33,10 +30,10 @@ export default class Nav extends Component {
         } else {
             buttons = (
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
+                    <li className="nav-item pt-4">
                         <Link to={'/login'} className="nav-link">Login</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item pt-4">
                         <Link to={'/register'} className="nav-link">Sign up</Link>
                     </li>
                 </ul>
