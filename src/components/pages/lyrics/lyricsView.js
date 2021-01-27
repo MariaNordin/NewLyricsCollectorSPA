@@ -4,10 +4,6 @@ import SaveButton from '../collections/saveButton';
 
 export default class LyricsView extends Component {
 
-    handleRedirect() {
-        
-    }
-
     handleClose() {
         this.props.onClose();
     }
@@ -18,7 +14,7 @@ export default class LyricsView extends Component {
         if(this.props.user !== null) {
             buttons = (
                 <>
-                <SaveButton user={this.props.user} onSavedCallback={() => this.handleRedirect()}/>
+                <SaveButton user={this.props.user}/>
                 <Button className="ml-3 mt-3 pl-4 pr-4" 
                     variant="secondary" onClick={() => this.handleClose()}>Close
                 </Button>

@@ -8,35 +8,9 @@ export default class SaveLyrics extends Component {
         this.state = { 
             collections: this.props.user.collections, 
             collectionId: '',
+            isSaved: false
         }
     }
-
-    // async componentDidMount() {
-    //     let token = sessionStorage.getItem('token');
-
-    //     await fetch('https://localhost:44307/api/Collection/AllCollections', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json; charset=UTF-8',
-    //             'Authorization': 'Bearer ' + token
-    //         }
-    //     })
-    //     .then(async response => {
-    //         const data = await response.json();
-        
-    //         if(!response.ok) {
-    //             const error = (data && data.message) || response.status;
-    //             return Promise.reject(error);
-    //         }
-        
-    //         console.log(data);
-    //         this.setState({ collections: data });
-    //     })
-    //     .catch(error => {
-    //         this.setState({ errorMessage: error.toString() });
-    //         console.error('Error: ', error);
-    //     })
-    // }
 
     async handleSave(id) {
         let token = sessionStorage.getItem('token');
@@ -63,23 +37,36 @@ export default class SaveLyrics extends Component {
     }
 
     handleSaved() {
-        this.props.onSaved();
+        this.setState({ isSaved: true })       
     }
 
     render() {
-        return (
-            <div className="pop-up">
-                <Container>
-                    <ListGroup className="mt-3">
-                        {this.state.collections.map((item) => (
-                            <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleSave(item.id)}>
-                            {(item.name)}
-                            </ListGroup.Item>
-                        ))}    
+        if (this.state.isSaved === true) {
+            return (
+                <Container>                    
+                    <ListGroup className="mt-3 mb-3">
+                        <ListGroup.Item variant="info">
+                            Lyrics saved!
+                        </ListGroup.Item>
                     </ListGroup>
                 </Container>
-            </div>            
-        )
+            )
+        }
+        else {
+            return (
+                <div className="pop-up">
+                    <Container>
+                        Select collection:
+                        <ListGroup className="mt-3 mb-3">
+                            {this.state.collections.map((item) => (
+                                <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleSave(item.id)}>
+                                {(item.name)}
+                                </ListGroup.Item>
+                            ))}    
+                        </ListGroup>
+                    </Container>
+                </div>            
+            )
+        }       
     }
-
 }
