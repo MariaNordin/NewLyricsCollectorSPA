@@ -24,6 +24,9 @@ export default class Nav extends Component {
                     </li>
                     <li className="nav-item pt-4">
                         <Link to={'/'} className="nav-link">Signed in as: {this.props.user.name}</Link>
+                    </li>
+                    <li className="nav-item pt-4">
+                        <Link to={'/collection'} className="nav-link"></Link>
                     </li>                                 
                 </ul>    
             )

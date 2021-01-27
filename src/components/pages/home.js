@@ -13,7 +13,7 @@ export default class Home extends Component {
         }
         else {
             return (
-                <SearchLyrics />
+                <SearchLyrics isLoggedIn={true}/>
             )
         }
     }

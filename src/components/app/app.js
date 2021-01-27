@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import './app.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Nav from './../nav/nav';

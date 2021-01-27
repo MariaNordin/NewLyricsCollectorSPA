@@ -3,15 +3,15 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 
 import PopUpButton from './popUpButton';
+import ThisCollection from './thisCollection';
 
 export default class Collections extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            collections: this.props.user.collections,
-            collectionWithLyrics: [], 
-            collectionId: '', 
-            showCollectionLyrics: false,
+            collections: this.props.user.collections, 
+            collectionId: '',
+            showThisCollection: false,
         }
     }
 
@@ -48,14 +48,29 @@ export default class Collections extends Component {
         })
     }
     
+    handleListClickEvent(id) {
+        this.setState({ collectionId: id, showThisCollection: true });        
+    }
 
+    handleClose() {
+        this.setState({ showThisCollection: false });
+    }
 
     render() {
+        if(this.state.showThisCollection === true) {
+            return (
+                <ThisCollection 
+                    collectionId={this.state.collectionId}
+                    onBackClick={() => this.handleClose()}
+                />
+            )
+        }
         return (
             <div className="collections">
                 <Container>
+                    <h1 className="mb-4" >My Collections</h1>
                     <PopUpButton onSavedCollection={() => this.updateCollections()}/>
-                    <ListGroup className="mt-4">
+                    <ListGroup className="mt-3">
                         {this.state.collections.map((item) => (
                             <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
                             {(item.name)}
@@ -65,5 +80,6 @@ export default class Collections extends Component {
                 </Container>                
             </div>
         )
+               
     }
 }
