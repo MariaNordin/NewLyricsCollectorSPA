@@ -15,8 +15,7 @@ export default class SearchLyrics extends Component {
             title: '', 
             message: '', 
             lyrics: null, 
-            showLyrics: false, 
-            isLoggedIn: false
+            showLyrics: false
         };
     }
 
@@ -50,14 +49,9 @@ export default class SearchLyrics extends Component {
         ) : this.setState({ showLyrics: true });
     }
 
-    // formatLyrics() {
-    //     var formattedLyrics = this.state.lyrics.lyrics;
-    //     formattedLyrics = formattedLyrics.split('.');
-    //     this.setState({ lyrics: formattedLyrics, showLyrics: true })
-    // }
 
     handleClose() {
-        this.setState({ showLyrics: false })
+        this.setState({ showLyrics: false, artist: '', title: '' })
     }
 
     render() {
@@ -65,7 +59,7 @@ export default class SearchLyrics extends Component {
 
         if(showLyrics === true) {
             return (
-                <LyricsView lyrics={lyrics} onClose={() => this.handleClose()}/>
+                <LyricsView user={this.props.user} lyrics={lyrics} onClose={() => this.handleClose()}/>
             )
         }
         else {
