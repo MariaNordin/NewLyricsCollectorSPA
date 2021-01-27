@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
+import SaveButton from '../collections/saveButton';
 
 export default class LyricsView extends Component {
 
-    handleSave() {
-
+    handleRedirect() {
+        
     }
 
     handleClose() {
@@ -17,9 +18,7 @@ export default class LyricsView extends Component {
         if(this.props.user !== null) {
             buttons = (
                 <>
-                <Button className="ml-3 mt-3 pl-4 pr-4" 
-                    variant="info" onClick={() => this.handleSave()}>Save lyrics
-                </Button>
+                <SaveButton user={this.props.user} onSavedCallback={() => this.handleRedirect()}/>
                 <Button className="ml-3 mt-3 pl-4 pr-4" 
                     variant="secondary" onClick={() => this.handleClose()}>Close
                 </Button>
