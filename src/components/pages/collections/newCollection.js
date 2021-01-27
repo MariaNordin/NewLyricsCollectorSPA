@@ -29,12 +29,18 @@ export default class Login extends Component {
             }
         })
         .then((response) => response.json())
-        .then((json) => this.setState({ message: json.message }))
+        .then((json) => 
+            this.setState({ message: json.message }))
         .catch (
             err => {
                 console.log(err);
             }
         )
+        this.handleSaved();
+    }
+
+    handleSaved() {
+        this.props.onSaved();
     }
 
     render() {

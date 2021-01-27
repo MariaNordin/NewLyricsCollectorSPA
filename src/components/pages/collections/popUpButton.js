@@ -9,7 +9,7 @@ export default class PopUpButton extends Component {
     render() {
         const Modal = () => (
             <Popup trigger={<Button variant="outline-info">New Collection</Button>} modal>
-                <NewCollection />
+                <NewCollection onSaved={this.props.onSavedCollection}/>
             </Popup>
         );
         return (

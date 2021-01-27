@@ -21,13 +21,40 @@ export default class Collections extends Component {
         }
     }
 
+    async updateCollections() {
+        let token = sessionStorage.getItem('token');
+
+        await fetch('https://localhost:44307/api/Collection/AllCollections', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(async response => {
+            const data = await response.json();
+        
+            if(!response.ok) {
+                const error = (data && data.message) || response.status;
+                return Promise.reject(error);
+            }
+        
+            console.log(data);
+            this.setState({ collections: data });
+        })
+        .catch(error => {
+            this.setState({ errorMessage: error.toString() });
+            console.error('Error: ', error);
+        })
+    }
+    
 
 
     render() {
         return (
             <div className="collections">
                 <Container>
-                    <PopUpButton />
+                    <PopUpButton onSavedCollection={() => this.updateCollections()}/>
                     <ListGroup className="mt-4">
                         {this.state.collections.map((item) => (
                             <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
