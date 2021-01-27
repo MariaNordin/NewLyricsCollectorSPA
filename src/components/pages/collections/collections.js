@@ -15,6 +15,14 @@ export default class Collections extends Component {
         }
     }
 
+    componentDidUpdate(prevProp) {
+        if (this.props.user.collections !== prevProp.user.collections) {
+            this.setState({ collections: this.props.user.collections })
+        }
+    }
+
+
+
     render() {
         return (
             <div className="collections">

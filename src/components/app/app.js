@@ -17,6 +17,10 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.setUser();
+  }
+
   async setUser() {
     let token = sessionStorage.getItem('token');
     console.log(token);
