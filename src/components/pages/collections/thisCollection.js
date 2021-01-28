@@ -8,7 +8,7 @@ import CollectionLyrics from './collectionlyrics';
 export default class Collections extends Component {
     constructor() {
         super();
-        this.state = { collection: [{}], name: '', lyrics: [], collectionLyrics: '', showLyrics: false }
+        this.state = { collection: [], name: '', lyrics: [], lyricsId: '', showLyrics: false }
     }
 
     async componentDidMount() {
@@ -41,8 +41,8 @@ export default class Collections extends Component {
         })        
     }
 
-    handleLyricsClick(lyrics) {
-        this.setState({ collectionLyrics: lyrics, showLyrics: true });
+    handleLyricsClick(id) {
+        this.setState({ lyricsId: id, showLyrics: true });
     }
 
     handleCloseLyrics() {
@@ -57,9 +57,11 @@ export default class Collections extends Component {
 
         if (this.state.showLyrics === true) {
             return (
-                <CollectionLyrics 
-                    lyrics={this.state.collectionLyrics}
-                    onClose={() => this.handleCloseLyrics()} />
+                <CollectionLyrics
+                    lyrics={this.state.lyrics}
+                    lyricsId={this.state.lyricsId}
+                    onClose={() => this.handleCloseLyrics()} 
+                />
             )
         }
         else {
@@ -70,7 +72,7 @@ export default class Collections extends Component {
                         <ListGroup className="mt-4">
                         {this.state.lyrics.map((item) => (
                             <div key={item.lyricsId}>
-                            <ListGroup.Item as="a" key={item.lyrics.id} variant="danger" onClick={() => this.handleLyricsClick(item.lyrics.lyrics)}>
+                            <ListGroup.Item as="a" key={item.lyrics.id} variant="danger" onClick={() => this.handleLyricsClick(item.lyrics.id)}>
                                     {item.lyrics.title} - {item.lyrics.artist}                                                        
                             </ListGroup.Item>
                             </div>                        
