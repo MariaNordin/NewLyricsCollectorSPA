@@ -38,6 +38,13 @@ body, html, .App, #root, .auth-wrapper {
   transition: all .3s;
 }
 
+.cover {
+  float: right;
+  width: 150px;
+  height: 150px;
+  margin: 0px 15px 15px 25px;
+}
+
 /*---------*/
 
 .auth-wrapper {

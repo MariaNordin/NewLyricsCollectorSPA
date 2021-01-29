@@ -40,7 +40,8 @@ export default class SearchLyrics extends Component {
         .then((response) => response.json())
         .then((json) => this.setState({ lyrics: json }));
 
-        this.checkLyrics();
+        //this.checkLyrics();
+        this.setState({ showLyrics: true });
     }
 
     checkLyrics() {
