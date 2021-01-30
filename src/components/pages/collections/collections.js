@@ -15,6 +15,10 @@ export default class Collections extends Component {
         }
     }
 
+    componentDidMount() {
+        this.updateCollections();
+    }
+
     componentDidUpdate(prevProp) {
         if (this.props.user.collections !== prevProp.user.collections) {
             this.setState({ collections: this.props.user.collections })
@@ -47,7 +51,7 @@ export default class Collections extends Component {
             console.error('Error: ', error);
         })
     }
-    
+
     handleListClickEvent(id) {
         this.setState({ collectionId: id, showThisCollection: true });        
     }

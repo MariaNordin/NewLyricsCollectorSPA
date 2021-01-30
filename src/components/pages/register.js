@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Container, Form, Button} from 'react-bootstrap';
 
 export default class Register extends Component {
@@ -8,7 +9,9 @@ export default class Register extends Component {
             email: '', 
             password: '',
             name: '',
-            message: ''
+            message: '',
+            isRegistered: false,
+            doLogin: false
         }
     }
 
@@ -16,11 +19,11 @@ export default class Register extends Component {
         this.setState({ message: '' });
 
         const emailRegex = /^\S+@\S+\.\S+$/;
-    
-        if (this.state.email === "" || this.state.password === "" || this.state.name === "" ) {
+        
+        if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
             this.setState({ message: "Can't register empty" });
         }
-        else(
+        else (
             (emailRegex.test(this.state.email)) ? (
                 this.register()
             ):
@@ -38,23 +41,45 @@ export default class Register extends Component {
           }),
           headers: { 'Content-type': 'application/json; charset=UTF-8' }
         })
-        .then((response) => response.json())
-        .then((json) => this.setState({ message: json.message }))
-        .catch (
-            err => {
-                console.log(err);
+        .then(async response => {
+            const data = await response.json();
+      
+            if(!response.ok) { 
+              const error = (data) || response.status;
+              return Promise.reject(error);
             }
-        )
-        this.checkMessage();
+      
+            this.setState({ message: "Registered!", isRegistered: true });
+        })
+        .catch(error => {
+            this.setState({ errorMessage: error.toString() });
+            console.error('Error: ', error);
+        })
     }
 
-    checkMessage() {
-        if (this.state.message === "Registered!")
-        this.setState({ showLoginLink: true })
+    handleLogin() {
+        this.setState({ doLogin: true })
     }
-
 
     render() {
+
+        let button;
+
+        if (this.state.isRegistered === false) {
+            button = (
+                <Button variant='primary' block onClick={() => this.handleSubmit()}>Register</Button>
+            )
+        }
+        else {
+            button = (
+                <Button variant='success' block onClick={() => this.handleLogin()}>Login</Button>
+            )
+        }
+
+        if(this.state.doLogin === true) {
+            return <Redirect to={'/login'}/>;
+        }
+
         const { email, password, name, message } = this.state;
         return (
             <div className="formContainer">
@@ -71,7 +96,7 @@ export default class Register extends Component {
                 </Form.Row>      
                 <Form.Row className='mt-3'>              
                     <Form.Control 
-                        type='input'
+                        type='email'
                         value={email}
                         placeholder='Email'
                         onChange={(e) => this.setState({ email: e.target.value })}
@@ -80,7 +105,7 @@ export default class Register extends Component {
                 </Form.Row>
                 <Form.Row className='mt-3'>
                     <Form.Control 
-                        type='input'
+                        type='password'
                         value={password}
                         placeholder='Password'
                         onChange={(e) => this.setState({ password: e.target.value })}
@@ -88,7 +113,7 @@ export default class Register extends Component {
                     </Form.Control>
                 </Form.Row>                    
                 <Form.Row className='mt-4'>  
-                    <Button variant='primary' block onClick={() => this.handleSubmit()}>Register</Button>
+                    {button}
                 </Form.Row>
                 <Form.Row className='mt-4'>
                     <div>{message}</div>

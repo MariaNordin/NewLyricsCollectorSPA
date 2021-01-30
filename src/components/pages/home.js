@@ -8,7 +8,7 @@ export default class Home extends Component {
     render() {
         if(this.props.user !== null) {
             return (
-                <Collections user={this.props.user}/>
+                <Collections user={this.props.user} />
             )
         }
         else {

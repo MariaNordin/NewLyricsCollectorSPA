@@ -15,7 +15,7 @@ export default class LyricsView extends Component {
         if(this.props.user !== null) {
             buttons = (
                 <>
-                <SaveButton user={this.props.user}/>
+                <SaveButton />
                 <Button className="ml-3 mt-3 pl-4 pr-4" 
                     variant="secondary" onClick={() => this.handleClose()}>Close
                 </Button>

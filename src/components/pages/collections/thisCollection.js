@@ -32,7 +32,7 @@ export default class Collections extends Component {
                 return Promise.reject(error);
             }
         
-            this.setState({ collection: data, name: data[0].name, lyrics: data[0].lyrics });
+            this.setState({ collection: data, name: data.name, lyrics: data.lyrics });
             console.log(this.state.collection, this.state.lyrics);
         })
         .catch(error => {

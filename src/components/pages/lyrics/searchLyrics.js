@@ -40,15 +40,9 @@ export default class SearchLyrics extends Component {
         .then((response) => response.json())
         .then((json) => this.setState({ lyrics: json }));
 
-        //this.checkLyrics();
         this.setState({ showLyrics: true });
     }
 
-    checkLyrics() {
-        (this.state.lyrics.lyrics === "") ? (
-            this.setState({ message: "No lyrics found" })
-        ) : this.setState({ showLyrics: true });
-    }
 
 
     handleClose() {
@@ -67,7 +61,7 @@ export default class SearchLyrics extends Component {
             return (
                 <Container>
                 <Form className='mt-5'>Search for lyrics:
-                    <Form.Row className='mt-4'>
+                    <Form.Row className='mt-4 mb-4'>
                         <Col>       
                             <Form.Control 
                                 type='input' 
