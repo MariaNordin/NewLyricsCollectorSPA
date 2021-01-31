@@ -11,7 +11,8 @@ Låttexterna visas tillsammans med en bild på ett skivomslag från ett album so
   
  - Ladda ner och öppna LyricsCollectorSPA  
  - För att kunna starta appen krävs att du har Node och npm installerat. Laddas ner [HÄR](https://nodejs.org/en/)
-- Öppna Git Bash eller annat command line verktyg, se till att stå i rätt katalog + fil (din sökväg..\new-lyrics-collector)  
+- Öppna Git Bash eller annat command line verktyg, se till att stå i rätt katalog + fil  
+(dvs. där du har lagt mappen.. sökvägen ska sluta i \new-lyrics-collector)  
 - Kör kommandot ``` npm start ```  
 Nu borde en webbläsare öppnas och appen köras på localhost:3000  
 Om appen inte startar, kör först ```npm install ``` och därefter ```npm start```
