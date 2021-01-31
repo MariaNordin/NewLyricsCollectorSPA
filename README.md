@@ -7,7 +7,7 @@ Låttexterna visas tillsammans med en bild på ett skivomslag från ett album so
 
 #### För att kunna köra applikationen krävs följande steg:
 - Ladda ner, öppna och kör igång backend [LyricsCollectorAPI](https://github.com/MariaNordin/LyricsCollectorAPI)  
-(instruktioner för steg som behöver följas innan man kör igång backend återfinns i repots README)  
+(Instruktioner steg för steg som behöver följas innan man kör igång backend återfinns i nämnda repots README)  
   
  - Ladda ner och öppna LyricsCollectorSPA  
  - För att kunna start appen krävs att du har Node och npm installerat. Laddas ner [HÄR](https://nodejs.org/en/)
