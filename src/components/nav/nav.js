@@ -17,13 +17,16 @@ export default class Nav extends Component {
             buttons = (
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item pt-4">
-                        <Link to={'/search'} className="nav-link">Search</Link>
+                        <Link to={'/search'} className="nav-link">Search Lyrics</Link>
                     </li>
                     <li className="nav-item pt-4">
                         <Link to={'/'} onClick={() => this.handleLogout()} className="nav-link">Logout</Link>
                     </li>
                     <li className="nav-item pt-4">
-                        <Link to={'/'} className="nav-link">Signed in as: {this.props.user.name}</Link>
+                        <Link to={'/'} className="nav-link">My Collections</Link>
+                    </li>
+                    <li className="user">
+                        <p>Signed in as: {this.props.user.name}</p>
                     </li>
                     <li className="nav-item pt-4">
                         <Link to={'/collection'} className="nav-link"></Link>

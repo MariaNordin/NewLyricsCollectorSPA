@@ -37,10 +37,21 @@ export default class SearchLyrics extends Component {
           }),
           headers: { 'Content-Type': 'application/json; charset=UTF-8'}
         })
-        .then((response) => response.json())
-        .then((json) => this.setState({ lyrics: json }));
+        .then(async response => {
+            const data = await response.json();
+      
+            if(!response.ok) {
+              const error = (data && data.message) || response.status;
+              this.setState({ message: "No lyrics found"});
+              return Promise.reject(error);              
+            }
 
-        this.setState({ showLyrics: true });
+            this.setState({ lyrics: data, showLyrics: true });
+        })
+        .catch(error => {
+            this.setState({ errorMessage: error.toString() });
+            console.error('Error: ', error);
+        })
     }
 
 

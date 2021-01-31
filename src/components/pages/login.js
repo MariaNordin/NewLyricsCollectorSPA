@@ -8,7 +8,8 @@ export default class Login extends Component {
         this.state = {  
             name: '',
             password: '',
-            loggedIn: false
+            loggedIn: false,
+            message: ''
         }
     }
 
@@ -26,7 +27,8 @@ export default class Login extends Component {
       
             if(!response.ok) {
               const error = (data && data.message) || response.status;
-              return Promise.reject(error);
+              this.setState({ message: "Something went wrong. Please try again "});
+              return Promise.reject(error);              
             }
       
             sessionStorage.setItem('token', data.token);
@@ -44,7 +46,7 @@ export default class Login extends Component {
         if(this.state.loggedIn === true) {
             return <Redirect to={'/'}/>;
         }
-        const { password, name } = this.state;
+        const { password, name, message } = this.state;
         return (
             <div className="formContainer">
                 <Container>
@@ -70,6 +72,9 @@ export default class Login extends Component {
                 <Form.Row className='mt-4'>  
                     <Button variant='primary' block onClick={() => this.handleSubmit()}>Login</Button>
                 </Form.Row>
+                <Form.Row className='mt-4'>
+                    <div>{message}</div>
+                  </Form.Row>
                 </Form>
             </Container>
             </div>            

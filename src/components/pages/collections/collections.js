@@ -69,21 +69,23 @@ export default class Collections extends Component {
                 />
             )
         }
-        return (
-            <div className="collections">
-                <Container>
-                    <h1 className="mb-4" >My Collections</h1>
-                    <PopUpButton onSavedCollection={() => this.updateCollections()}/>
-                    <ListGroup className="mt-3">
-                        {this.state.collections.map((item) => (
-                            <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
-                            {(item.name)}
-                            </ListGroup.Item>
-                        ))}    
-                    </ListGroup>
-                </Container>                
-            </div>
-        )
-               
+        else {
+            return (
+                <div className="collections">
+                    <Container>
+                        <h1 className="mb-4" >My Collections</h1>
+                        <PopUpButton onSavedCollection={() => this.updateCollections()}/>
+                        <ListGroup className="mt-3 mb-4">
+                            {this.state.collections.map((item) => (
+                                <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
+                                {(item.name)}
+                                </ListGroup.Item>
+                            ))}    
+                        </ListGroup>
+                        <div>(Navigate to <b>Search Lyrics</b> where you can search and add lyrics to your collections! :)</div>
+                    </Container>                
+                </div>
+            )
+        }      
     }
 }
