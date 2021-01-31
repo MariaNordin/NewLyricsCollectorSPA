@@ -10,7 +10,7 @@ Låttexterna visas tillsammans med en bild på ett skivomslag från ett album so
 (Instruktioner steg för steg som behöver följas innan man kör igång backend återfinns i nämnda repots README)  
   
  - Ladda ner och öppna LyricsCollectorSPA  
- - För att kunna start appen krävs att du har Node och npm installerat. Laddas ner [HÄR](https://nodejs.org/en/)
+ - För att kunna starta appen krävs att du har Node och npm installerat. Laddas ner [HÄR](https://nodejs.org/en/)
 - Öppna terminalen och kör kommandot ``` npm start ```  
 Nu borde en webbläsare öppnas och appen köras på localhost:3000  
 Om appen inte startar, kör först ```npm install ``` och därefter ```npm start```
