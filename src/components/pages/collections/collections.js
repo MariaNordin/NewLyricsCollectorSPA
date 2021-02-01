@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 import PopUpButton from './popUpButton';
 import ThisCollection from './thisCollection';
+import SearchLyrics from '../lyrics/searchLyrics';
 
 export default class Collections extends Component {
     constructor(props) {
@@ -71,19 +72,23 @@ export default class Collections extends Component {
         }
         else {
             return (
+                <div className="logged-in">
                 <div className="collections">
                     <Container>
-                        <h1 className="mb-4" >My Collections</h1>
+                        <h3 className="mb-4" >My Collections</h3>
                         <PopUpButton onSavedCollection={() => this.updateCollections()}/>
                         <ListGroup className="mt-3 mb-4">
                             {this.state.collections.map((item) => (
-                                <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
+                                <ListGroup.Item action key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
                                 {(item.name)}
                                 </ListGroup.Item>
                             ))}    
                         </ListGroup>
-                        <div>(Navigate to <b>Search Lyrics</b> where you can search and add lyrics to your collections! :)</div>
-                    </Container>                
+                    </Container>
+                </div>
+                <div>
+                    <SearchLyrics user={this.props.user}/>               
+                </div>
                 </div>
             )
         }      

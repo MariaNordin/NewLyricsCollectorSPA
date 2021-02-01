@@ -8,7 +8,7 @@ import NewCollection from './newCollection';
 export default class PopUpButton extends Component {
     render() {
         const Modal = () => (
-            <Popup trigger={<Button variant="outline-info">Create New Collection</Button>} modal>
+            <Popup trigger={<Button variant="outline-info">Add New Collection</Button>} modal>
                 <NewCollection onSaved={this.props.onSavedCollection}/>
             </Popup>
         );

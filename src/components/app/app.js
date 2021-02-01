@@ -57,7 +57,7 @@ export default class App extends Component {
       <BrowserRouter>
         <div>
           <Nav user={this.state.user} onLoggedOut={() => this.handleLogout()} />  
-          <div className="auth-wrapper">
+          <div className="pages">
               <Switch>
                 <Route exact path="/" component={() => <Home user={this.state.user}/>}/>                                                              
                 <Route exact path="/login" component={() => <Login setUser={() => this.setUser()}/>} />

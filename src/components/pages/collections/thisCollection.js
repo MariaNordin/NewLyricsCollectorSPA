@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
 
 import CollectionLyrics from './collectionlyrics';
 
@@ -68,12 +69,13 @@ export default class Collections extends Component {
             return (
                 <div className="collections">
                     <Container>
-                        <h1 className="mt-3">{this.state.name}</h1>
+                        <h2 className="mt-3">{this.state.name}</h2>
                         <ListGroup className="mt-4">
                         {this.state.lyrics.map((item) => (
                             <div key={item.lyricsId}>
-                            <ListGroup.Item as="a" key={item.lyrics.id} variant="danger" onClick={() => this.handleLyricsClick(item.lyrics.id)}>
-                                    {item.lyrics.title} - {item.lyrics.artist}                                                        
+                            <ListGroup.Item action key={item.lyrics.id} variant="danger" onClick={() => this.handleLyricsClick(item.lyrics.id)}>
+                                    <Image className="mr-3 cover-list-item" src={item.lyrics.coverImage} alt="albumCover"/>
+                                    {item.lyrics.title} - {item.lyrics.artist}                                                                                                                    
                             </ListGroup.Item>
                             </div>                        
                         ))}

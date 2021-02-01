@@ -45,15 +45,20 @@ body, html, .App, #root, .auth-wrapper {
   margin: 0px 15px 15px 25px;
 }
 
+.cover-list-item {
+  width: 60px;
+  height: 60px;
+}
+
 .user {
   margin-top: 32px;
   margin-left: 30px;
-  color: #008B8B;
+  color: #17a2b8;
 }
 
 /*---------*/
 
-.auth-wrapper {
+.pages {
   display: flex;
   justify-content: center;
   flex-direction: column;
