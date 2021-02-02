@@ -17,6 +17,11 @@ export default class SearchLyrics extends Component {
             lyrics: null, 
             showLyrics: false
         };
+        this.inputArtistRef = React.createRef();
+    }
+
+    componentDidMount() {
+        this.inputArtistRef.current.focus();
     }
 
     handleInput(artist, title) {
@@ -75,7 +80,8 @@ export default class SearchLyrics extends Component {
                     <h4>Search for lyrics:</h4>
                     <Form.Row className='mt-4 mb-4'>
                         <Col>       
-                            <Form.Control 
+                            <Form.Control
+                                ref={this.inputArtistRef}
                                 type='input' 
                                 value={artist} 
                                 placeholder='Artist' 

@@ -13,6 +13,11 @@ export default class Register extends Component {
             isRegistered: false,
             doLogin: false
         }
+        this.inputNameRef = React.createRef();
+    }
+
+    componentDidMount() {
+        this.inputNameRef.current.focus();
     }
 
     handleSubmit() {
@@ -67,7 +72,7 @@ export default class Register extends Component {
 
         if (this.state.isRegistered === false) {
             button = (
-                <Button variant='primary' block onClick={() => this.handleSubmit()}>Register</Button>
+                <Button variant='info' block onClick={() => this.handleSubmit()}>Register</Button>
             )
         }
         else {
@@ -86,7 +91,8 @@ export default class Register extends Component {
                 <Container>
                 <Form className='mt-4 mb-4'>
                 <Form.Row className='mt-4'>
-                    <Form.Control 
+                    <Form.Control
+                        ref={this.inputNameRef} 
                         type='input'
                         value={name}
                         placeholder='Username'

@@ -11,6 +11,11 @@ export default class Login extends Component {
             loggedIn: false,
             message: ''
         }
+        this.inputNameRef = React.createRef();
+    }
+
+    componentDidMount() {
+        this.inputNameRef.current.focus();
     }
 
     async handleSubmit() {
@@ -53,6 +58,7 @@ export default class Login extends Component {
                 <Form className='mt-4 mb-4'>
                 <Form.Row className='mt-4'>
                     <Form.Control 
+                        ref={this.inputNameRef}
                         type='input'
                         value={name}
                         placeholder='Username'
@@ -70,7 +76,7 @@ export default class Login extends Component {
                     </Form.Control>
                 </Form.Row>                    
                 <Form.Row className='mt-4'>  
-                    <Button variant='primary' block onClick={() => this.handleSubmit()}>Login</Button>
+                    <Button variant='info' block onClick={() => this.handleSubmit()}>Login</Button>
                 </Form.Row>
                 <Form.Row className='mt-4'>
                     <div>{message}</div>
