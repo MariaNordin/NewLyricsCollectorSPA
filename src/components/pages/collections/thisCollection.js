@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
 
 import CollectionLyrics from './collectionlyrics';
 
@@ -67,10 +68,18 @@ export default class Collections extends Component {
         }
         else {
             return (
-                <div className="collections">
+                <div className="container mr-5 ml-5">
                     <Container>
-                        <h2 className="mt-3">{this.state.name}</h2>
-                        <ListGroup className="mt-4">
+                        <Row>
+                            <div className="container mr-5 ml-5">
+                            <h2 className="mt-3 collection-name">{this.state.name}</h2>
+                            <div className="btn-this-collection">
+                                <Button className="mt-3 pr-2 pl-2" variant="outline-info" 
+                                    onClick={() => this.onGoBackClick()}>Go back</Button>
+                            </div> 
+                            </div>                                                       
+                        </Row>                        
+                        <ListGroup className="mt-4 mr-5 ml-5">
                         {this.state.lyrics.map((item) => (
                             <div key={item.lyricsId}>
                             <ListGroup.Item action key={item.lyrics.id} variant="danger" onClick={() => this.handleLyricsClick(item.lyrics.id)}>
@@ -79,11 +88,9 @@ export default class Collections extends Component {
                             </ListGroup.Item>
                             </div>                        
                         ))}
-                        </ListGroup>                    
-                        <Button className="mt-4" variant="info" 
-                            onClick={() => this.onGoBackClick()}>Go back</Button>
-                    </Container>                
-                </div>
+                        </ListGroup>                        
+                    </Container>
+                </div>                                   
             )
         }        
     }

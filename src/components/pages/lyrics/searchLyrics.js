@@ -62,7 +62,7 @@ export default class SearchLyrics extends Component {
 
 
     handleClose() {
-        this.setState({ showLyrics: false, artist: '', title: '' })
+        this.setState({ showLyrics: false, });
     }
 
     render() {
@@ -76,7 +76,7 @@ export default class SearchLyrics extends Component {
         else {
             return (
                 <Container>
-                <Form className='mt-5'>
+                <Form className='mt-5 ml-5 mr-5'>
                     <h4>Search for lyrics:</h4>
                     <Form.Row className='mt-4 mb-4'>
                         <Col>       
@@ -102,7 +102,7 @@ export default class SearchLyrics extends Component {
                         </Col>            
                     </Form.Row>
                 </Form>
-                <p>{message}</p>
+                <p className="ml-5">{message}</p>
                 </Container>
             )
         }

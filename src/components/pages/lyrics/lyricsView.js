@@ -17,7 +17,7 @@ export default class LyricsView extends Component {
                 <>
                 <SaveButton />
                 <Button className="ml-3 mt-3 pl-4 pr-4" 
-                    variant="secondary" onClick={() => this.handleClose()}>Close
+                    variant="outline-secondary" onClick={() => this.handleClose()}>Close
                 </Button>
                 </>
             )
@@ -25,7 +25,7 @@ export default class LyricsView extends Component {
         else {
             buttons = (
                 <Button className="ml-3 mt-3 pl-4 pr-4" 
-                    variant="secondary" onClick={() => this.handleClose()}>Close
+                    variant="outline-secondary" onClick={() => this.handleClose()}>Close
                 </Button>
             )
         }

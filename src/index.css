@@ -19,10 +19,6 @@ body, html, .App, #root {
   color: #1DB954
 }
 
-.collections {
-  padding: 30px 200px;
-}
-
 .pop-up {
   padding: 20px;
 }
@@ -35,11 +31,6 @@ body, html, .App, #root {
   border-radius: 15px;
   transition: all .3s;
 }
-
-/*.formContainer .form-control:focus {
-  border-color: #e6ecec;
-  box-shadow: none;
-}*/
 
 .cover {
   float: right;
@@ -63,8 +54,41 @@ body, html, .App, #root {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   margin-top: 30px;
   text-align: left;
+}
+
+.logged-in {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+}
+
+.collections {
+  width: 20%;
+  margin-right: 5%;
+}
+
+.search {
+  width:  70%;
+  margin-right: 5%;
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.this-collection {
+  margin: 0px, 100px;
+}
+
+.collection-name {
+  float: left;
+}
+
+.btn-this-collection {
+  float: right;
 }
 
 /*-------------*/

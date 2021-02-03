@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Container from 'react-bootstrap/Container';
+//import Container from 'react-bootstrap/Container';
 
 import PopUpButton from './popUpButton';
 import ThisCollection from './thisCollection';
@@ -73,22 +73,20 @@ export default class Collections extends Component {
         else {
             return (
                 <div className="logged-in">
-                <div className="collections">
-                    <Container>
-                        <h3 className="mb-4" >My Collections</h3>
+                    <div className="collections">
+                        <h4 className="mb-4 mt-4" >Collections</h4>
                         <PopUpButton onSavedCollection={() => this.updateCollections()}/>
-                        <ListGroup className="mt-3 mb-4">
+                        <ListGroup className="mt-3">
                             {this.state.collections.map((item) => (
                                 <ListGroup.Item action key={item.id} variant="danger" onClick={() => this.handleListClickEvent(item.id)}>
                                 {(item.name)}
                                 </ListGroup.Item>
                             ))}    
                         </ListGroup>
-                    </Container>
-                </div>
-                <div>
-                    <SearchLyrics user={this.props.user}/>               
-                </div>
+                    </div>
+                    <div className="search">
+                        <SearchLyrics user={this.props.user}/>
+                    </div>                               
                 </div>
             )
         }      

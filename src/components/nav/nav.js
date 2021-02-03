@@ -46,7 +46,7 @@ export default class Nav extends Component {
         return (
             <nav className="navbar navbar-expand navbar-dark bg-dark p-4">
                 <Link to={'/'}>
-                    <img className="navbar-brand ml-4" src={logo} alt="logo" />
+                    <img className="navbar-brand ml-4 mb-2" src={logo} alt="logo" />
                 </Link> 
                 <div>                   
                     {buttons}
