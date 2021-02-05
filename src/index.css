@@ -62,12 +62,12 @@ body, html, .App, #root {
 .logged-in {
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 90%;
 }
 
 .collections {
   width: 20%;
-  margin-right: 5%;
+  margin-right: 2%;
 }
 
 .search {
@@ -80,7 +80,7 @@ body, html, .App, #root {
 }
 
 .this-collection {
-  margin: 0px, 100px;
+  width: 50%;
 }
 
 .collection-name {

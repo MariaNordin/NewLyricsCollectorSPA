@@ -68,7 +68,7 @@ export default class Login extends Component {
                 </Form.Row>
                 <Form.Row className='mt-3'>
                     <Form.Control 
-                        type='input'
+                        type='password'
                         value={password}
                         placeholder='Password'
                         onChange={(e) => this.setState({ password: e.target.value })}

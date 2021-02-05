@@ -68,7 +68,7 @@ export default class Collections extends Component {
         }
         else {
             return (
-                <div className="container mr-5 ml-5">
+                <div className="this-collection">
                     <Container>
                         <Row>
                             <div className="container mr-5 ml-5">

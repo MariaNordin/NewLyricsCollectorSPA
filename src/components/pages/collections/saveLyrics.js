@@ -9,7 +9,8 @@ export default class SaveLyrics extends Component {
             collections: null, 
             collectionId: '',
             isLoaded: false,
-            isSaved: false
+            message: '',
+            displayMessage: false
         }
     }
 
@@ -61,25 +62,22 @@ export default class SaveLyrics extends Component {
                 return Promise.reject(error);
             }
             
-            this.handleSaved();
+            this.setState({ message: data.message });
         })
         .catch(error => {
-            this.setState({ errorMessage: error.toString() });
+            this.setState({ errorMessage: error.toString(), message: error });
             console.error('Error: ', error);
         })
-    }
-
-    handleSaved() {
-        this.setState({ isSaved: true })       
+        this.setState({ displayMessage: true })
     }
 
     render() {
-        if (this.state.isSaved === true) {
+        if (this.state.displayMessage === true) {
             return (
                 <Container>                    
                     <ListGroup className="mt-3 mb-3">
                         <ListGroup.Item variant="info">
-                            Lyrics saved!
+                            {this.state.message}
                         </ListGroup.Item>
                     </ListGroup>
                 </Container>
