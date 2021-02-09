@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
+
 import LyricsView from './lyricsView';
 
 
@@ -14,7 +16,8 @@ export default class SearchLyrics extends Component {
             artist: '', 
             title: '', 
             message: '', 
-            lyrics: null, 
+            lyrics: null,
+            isLoading: false, 
             showLyrics: false
         };
         this.inputArtistRef = React.createRef();
@@ -28,12 +31,14 @@ export default class SearchLyrics extends Component {
         this.setState({ message: "", showLyrics: false });
 
         (artist !== '' && title !== '') ? (
-          this.searchLyrics()
+            this.searchLyrics()
         ):
         this.setState({ message: "Artist and title have to be specified"})
     }
 
     async searchLyrics() {
+        this.setState({ isLoading: true });
+
         await fetch('https://localhost:44307/api/Lyrics/Search', {
           method: 'POST',
           body: JSON.stringify({
@@ -47,11 +52,11 @@ export default class SearchLyrics extends Component {
       
             if(!response.ok) {
               const error = (data && data.message) || response.status;
-              this.setState({ message: "No lyrics found"});
+              this.setState({ message: "No lyrics found", isLoading: false });
               return Promise.reject(error);              
             }
 
-            this.setState({ lyrics: data, showLyrics: true });
+            this.setState({ lyrics: data, showLyrics: true, isLoading: false });
         })
         .catch(error => {
             this.setState({ errorMessage: error.toString() });
@@ -59,14 +64,12 @@ export default class SearchLyrics extends Component {
         })
     }
 
-
-
     handleClose() {
         this.setState({ showLyrics: false, });
     }
 
     render() {
-        const { artist, title, message, lyrics, showLyrics } = this.state
+        const { artist, title, message, lyrics, isLoading, showLyrics } = this.state
 
         if(showLyrics === true) {
             return (
@@ -75,8 +78,9 @@ export default class SearchLyrics extends Component {
         }
         else {
             return (
+                <>
                 <Container>
-                <Form className='mt-5 ml-5 mr-5'>
+                <Form className='mt-5'>
                     <h4>Search for lyrics:</h4>
                     <Form.Row className='mt-4 mb-4'>
                         <Col>       
@@ -101,9 +105,17 @@ export default class SearchLyrics extends Component {
                                 () => this.handleInput( artist, title )}>Search</Button>
                         </Col>            
                     </Form.Row>
-                </Form>
-                <p className="ml-5">{message}</p>
+                </Form>                              
                 </Container>
+                <div className="center-item">
+                    <p>{message}</p>
+                    {isLoading === true ? (
+                        <Spinner animation="border" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </Spinner>
+                    ): null }
+                </div>
+                </>
             )
         }
     }
