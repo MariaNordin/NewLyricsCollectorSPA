@@ -9,7 +9,7 @@ export default class SaveButton extends Component {
 
     render() {
         const Modal = () => (
-            <Popup trigger={<Button className="ml-3 mt-3 pl-4 pr-4" variant="info">Save</Button>} modal>
+            <Popup trigger={<Button className="ml-3 mt-4 pl-4 pr-4" variant="info">Save</Button>} modal>
                 <SaveLyrics />
             </Popup>
         );

@@ -95,7 +95,7 @@ export default class SaveLyrics extends Component {
                         Select collection:
                         <ListGroup className="mt-3 mb-3">
                             {this.state.collections.map((item) => (
-                                <ListGroup.Item as="a" key={item.id} variant="danger" onClick={() => this.handleSave(item.id)}>
+                                <ListGroup.Item action key={item.id} variant="danger" onClick={() => this.handleSave(item.id)}>
                                 {(item.name)}
                                 </ListGroup.Item>
                             ))}    

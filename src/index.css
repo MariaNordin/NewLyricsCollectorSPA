@@ -73,11 +73,6 @@ body, html, .App, #root {
 .search {
   width:  70%;
   margin: auto;
-/*  margin-right: 5%;
-  padding: 2%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row; */
 }
 
 .center-item {

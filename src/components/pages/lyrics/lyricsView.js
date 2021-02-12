@@ -10,22 +10,25 @@ export default class LyricsView extends Component {
     }
 
     render() {
+
+        let lyrics = this.props.lyrics.lyrics.split("\n");
+
         let buttons;
 
         if(this.props.user !== null) {
             buttons = (
                 <>
                 <SaveButton />
-                <Button className="ml-3 mt-3 pl-4 pr-4" 
-                    variant="outline-secondary" onClick={() => this.handleClose()}>Close
+                <Button className="ml-3 mt-4 pl-4 pr-4" 
+                    variant="secondary" onClick={() => this.handleClose()}>Close
                 </Button>
                 </>
             )
         }
         else {
             buttons = (
-                <Button className="ml-3 mt-3 pl-4 pr-4" 
-                    variant="outline-secondary" onClick={() => this.handleClose()}>Close
+                <Button className="ml-3 mt-4 pl-4 pr-4" 
+                    variant="secondary" onClick={() => this.handleClose()}>Close
                 </Button>
             )
         }
@@ -40,12 +43,16 @@ export default class LyricsView extends Component {
                                 <Image className="mr-3" src={this.props.lyrics.coverImage} alt="albumCover" fluid/>
                             </div>
                         </Card.Title>
-                        <Card.Subtitle className="mb-3 ml-3 mt-1">{this.props.lyrics.artist}             
+                        <Card.Subtitle className="mb-3 ml-3 mt-1 pb-3">{this.props.lyrics.artist}             
                         <a id="spotify" href={this.props.lyrics.spotifyLink} target="_blank" rel="noreferrer">
                             Listen on Spotify
                         </a>                                               
-                        </Card.Subtitle>                      
-                        <Card.Text className="ml-3 mr-3">{this.props.lyrics.lyrics}</Card.Text>                       
+                        </Card.Subtitle>
+                        {lyrics.map((item) => (                    
+                        <Card.Text key={item.index} className="ml-3 mr-3 mt-2 mb-2">
+                            {(item)}                           
+                        </Card.Text> 
+                        ))}                      
                         {buttons}
                     </Card.Body>
                 </Card>    
