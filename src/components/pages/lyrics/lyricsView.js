@@ -48,8 +48,8 @@ export default class LyricsView extends Component {
                             Listen on Spotify
                         </a>                                               
                         </Card.Subtitle>
-                        {lyrics.map((item) => (                    
-                        <Card.Text key={item.index} className="ml-3 mr-3 mt-2 mb-2">
+                        {lyrics.map((item, index) => (                    
+                        <Card.Text key={index} className="ml-3 mr-3 mt-2 mb-2">
                             {(item)}                           
                         </Card.Text> 
                         ))}                      
